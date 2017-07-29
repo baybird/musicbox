@@ -1,0 +1,29 @@
+:host{
+  width: 28%;
+  height: 100%;
+}
+.music_list{
+  height: 100%;
+}
+.music_list ul{
+  overflow-y: scroll;
+  height: 100%;
+  padding: 0 25px;
+}
+.music_list li{
+  list-style-type: none;
+  border-bottom: 1px dotted #ccc;
+}
+.music_list .trackName{
+  font-size: 1.1em;
+}
+.music_list .artistName{
+  font-size: 0.8em;
+}
+.music_item{
+  padding: 18px 8px;
+  cursor: pointer;
+}
+.selected{
+  background: #efefef;
+}

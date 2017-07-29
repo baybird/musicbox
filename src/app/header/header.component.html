@@ -1,0 +1,19 @@
+<header>
+  <div class="header_cell1">
+    <div id="logo">Music Box</div>
+  </div>
+  <div class="header_cell2">
+    <form (ngSubmit)="submit()" >
+      <input type="text" id="search_input" name="search_input" placeholder="Music, artist, album..." required
+             [(ngModel)]="keyword" />
+    </form>
+  </div>
+  <div class="header_cell3">
+    <div class="router">
+      <ul>
+        <li><a routerLink="/">Player</a></li>
+        <li><a routerLink="info">Info</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
