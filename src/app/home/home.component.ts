@@ -9,7 +9,7 @@ import { HostListener } from '@angular/core'
 export class HomeComponent implements OnInit {
   public keyword:string ;
   public dragging: boolean = false;
-  public leftBoxWidth: string = '38%';
+  public leftBoxWidth: string = '50%';
   public item: object = {};
 
   constructor() { }
