@@ -1,12 +1,12 @@
-<div class="music_box" *ngIf="item.trackName">
-  <h1>{{item.trackName}}</h1>
-  <h2>{{item.artistName}}</h2>
+<div class="music_box" *ngIf="music.trackName">
+  <h1>{{music.trackName}}</h1>
+  <h2>{{music.artistName}}</h2>
   <div class="">
-    <img src="{{item.artworkUrl100}}" alt="">
-    <p>{{item.collectionName}}</p>
-    <p>{{item.country}}</p>
+    <img src="{{music.artworkUrl100}}" alt="">
+    <p>{{music.collectionName}}</p>
+    <p>{{music.country}}</p>
   </div>
-  <audio src="{{item.previewUrl}}" controls >
+  <audio src="{{music.previewUrl}}" controls >
     <p>Your browser does not support HTML5 audio.</p>
   </audio>
 </div>

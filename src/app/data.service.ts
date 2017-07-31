@@ -3,12 +3,13 @@ import { sprintf } from 'sprintf-js'
 import { Http } from '@angular/http';
 
 import 'rxjs/add/operator/map';
+import { Subject } from 'rxjs/Subject'
 
 
 @Injectable()
 export class DataService {
   private search_url: string = "https://itunes.apple.com/search?term=%s";
-
+  public music = new Subject();
 
   // public item: EventEmitter<any> = new EventEmitter();
   constructor(private http: Http) {
@@ -23,6 +24,10 @@ export class DataService {
 
     return obj;
   }// end func
+
+  selectedMusic(music: object){
+    this.music.next(music);
+  }
 
 
 }

@@ -5,8 +5,7 @@ import { DataService } from '../data.service'
 @Component({
   selector: 'app-home-slider',
   templateUrl: './home-slider.component.html',
-  styleUrls: ['./home-slider.component.css'],
-  providers: [DataService]
+  styleUrls: ['./home-slider.component.css']
 })
 export class HomeSliderComponent implements OnInit {
   @Input() keyword: string;
@@ -32,6 +31,7 @@ export class HomeSliderComponent implements OnInit {
   }
 
   onClick(item): void {
-    this.clickItemEvent.emit(item)
+    this.dataService.selectedMusic(item);
+    // this.clickItemEvent.emit(item)
   }
 }

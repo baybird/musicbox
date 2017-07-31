@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { DataService } from '../data.service'
+
 
 @Component({
   selector: 'app-home-content',
@@ -7,9 +9,14 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class HomeContentComponent implements OnInit {
   @Input() keyword: string;
-  @Input() item: object;
+  // @Input() item: object;
+  private music: object = {};
 
-  constructor() {
+  constructor(private dataService: DataService) {
+    this.dataService.music.subscribe((data)=>{
+      // console.log(data)
+      this.music = data;
+    })
   }
 
   ngOnInit() {
