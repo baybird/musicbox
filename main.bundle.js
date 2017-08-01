@@ -163,6 +163,7 @@ var DataService = (function () {
         this.http = http;
         this.search_url = "https://itunes.apple.com/search?term=%s";
         this.music = new __WEBPACK_IMPORTED_MODULE_4_rxjs_Subject__["Subject"]();
+        this.autoplay = new __WEBPACK_IMPORTED_MODULE_4_rxjs_Subject__["Subject"]();
     }
     DataService.prototype.search = function (keyword) {
         if (keyword === void 0) { keyword = "Bob Dylan"; }
@@ -174,6 +175,9 @@ var DataService = (function () {
     }; // end func
     DataService.prototype.selectedMusic = function (music) {
         this.music.next(music);
+    };
+    DataService.prototype.setAutoplay = function (val) {
+        this.autoplay.next(val);
     };
     return DataService;
 }());
@@ -195,7 +199,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ":host{\r\n  background: #5f5f5f;\r\n  display: table;\r\n  width: 100%;\r\n  text-align: center;\r\n  color: #fff;\r\n  vertical-align: middle;\r\n  padding: 14px 0;\r\n  border-radius: 0 0 7px 7px;\r\n}\r\np{\r\n  font-size: 10px;\r\n}\r\n", "", {"version":3,"sources":["Z:/MyProject/02.WEB/nodejs/angularjs/v2/musicbox/src/app/footer/footer.component.css"],"names":[],"mappings":"AAAA;EACE,oBAAoB;EACpB,eAAe;EACf,YAAY;EACZ,mBAAmB;EACnB,YAAY;EACZ,uBAAuB;EACvB,gBAAgB;EAChB,2BAA2B;CAC5B;AACD;EACE,gBAAgB;CACjB","file":"footer.component.css","sourcesContent":[":host{\r\n  background: #5f5f5f;\r\n  display: table;\r\n  width: 100%;\r\n  text-align: center;\r\n  color: #fff;\r\n  vertical-align: middle;\r\n  padding: 14px 0;\r\n  border-radius: 0 0 7px 7px;\r\n}\r\np{\r\n  font-size: 10px;\r\n}\r\n"],"sourceRoot":""}]);
+exports.push([module.i, ":host{\r\n  background: #5f5f5f;\r\n  display: table;\r\n  width: 100%;\r\n  text-align: center;\r\n  color: #fff;\r\n  vertical-align: middle;\r\n  padding: 14px 0;\r\n  border-radius: 0 0 7px 7px;\r\n}\r\ndiv{\r\n  display: table-cell;\r\n  width: 50%;\r\n  text-align: left;\r\n  padding: 5px;\r\n  border: 0px solid #ccc;\r\n}\r\np{\r\n  font-size: 10px;\r\n}\r\nlabel{\r\n  cursor: pointer;\r\n}\r\n", "", {"version":3,"sources":["Z:/MyProject/02.WEB/nodejs/angularjs/v2/musicbox/src/app/footer/footer.component.css"],"names":[],"mappings":"AAAA;EACE,oBAAoB;EACpB,eAAe;EACf,YAAY;EACZ,mBAAmB;EACnB,YAAY;EACZ,uBAAuB;EACvB,gBAAgB;EAChB,2BAA2B;CAC5B;AACD;EACE,oBAAoB;EACpB,WAAW;EACX,iBAAiB;EACjB,aAAa;EACb,uBAAuB;CACxB;AACD;EACE,gBAAgB;CACjB;AACD;EACE,gBAAgB;CACjB","file":"footer.component.css","sourcesContent":[":host{\r\n  background: #5f5f5f;\r\n  display: table;\r\n  width: 100%;\r\n  text-align: center;\r\n  color: #fff;\r\n  vertical-align: middle;\r\n  padding: 14px 0;\r\n  border-radius: 0 0 7px 7px;\r\n}\r\ndiv{\r\n  display: table-cell;\r\n  width: 50%;\r\n  text-align: left;\r\n  padding: 5px;\r\n  border: 0px solid #ccc;\r\n}\r\np{\r\n  font-size: 10px;\r\n}\r\nlabel{\r\n  cursor: pointer;\r\n}\r\n"],"sourceRoot":""}]);
 
 // exports
 
@@ -208,7 +212,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/footer/footer.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>R.T. 2017</p>\n"
+module.exports = "<div>\n  <input type=\"checkbox\" id=\"autoplay\" value=\"1\" [(ngModel)]=\"autoplay\" (change)=\"onchange($event)\">\n  <label for=\"autoplay\">Auto play</label>\n</div>\n<div>\n  <p>R.T. 2017</p>\n</div>\n"
 
 /***/ }),
 
@@ -217,6 +221,7 @@ module.exports = "<p>R.T. 2017</p>\n"
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__data_service__ = __webpack_require__("../../../../../src/app/data.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FooterComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -228,10 +233,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var FooterComponent = (function () {
-    function FooterComponent() {
+    function FooterComponent(dataService) {
+        this.dataService = dataService;
     }
     FooterComponent.prototype.ngOnInit = function () {
+    };
+    FooterComponent.prototype.onchange = function () {
+        this.dataService.setAutoplay(this.autoplay);
+        console.log(this.autoplay);
     };
     return FooterComponent;
 }());
@@ -241,9 +252,10 @@ FooterComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/footer/footer.component.html"),
         styles: [__webpack_require__("../../../../../src/app/footer/footer.component.css")]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__data_service__["a" /* DataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__data_service__["a" /* DataService */]) === "function" && _a || Object])
 ], FooterComponent);
 
+var _a;
 //# sourceMappingURL=footer.component.js.map
 
 /***/ }),
@@ -342,7 +354,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/home-content/home-content.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"music_content\" *ngIf=\"music.trackName\">\n  <h1>{{music.trackName}}</h1>\n  <h2>{{music.artistName}}</h2>\n  <div class=\"\">\n    <img src=\"{{music.artworkUrl100}}\" alt=\"\">\n    <p>{{music.collectionName}}</p>\n    <p>{{music.country}}</p>\n  </div>\n  <audio src=\"{{music.previewUrl}}\" controls >\n    <p>Your browser does not support HTML5 audio.</p>\n  </audio>\n</div>\n"
+module.exports = "<div class=\"music_content\" *ngIf=\"music.trackName\">\n  <h1>{{music.trackName}}</h1>\n  <h2>{{music.artistName}}</h2>\n  <div class=\"\">\n    <img src=\"{{music.artworkUrl100}}\" alt=\"\">\n    <p>{{music.collectionName}}</p>\n    <p>{{music.country}}</p>\n  </div>\n  <audio src=\"{{music.previewUrl}}\" controls autoplay *ngIf=\"autoplay==1\">\n    <p>Your browser does not support HTML5 audio.</p>\n  </audio>\n\n  <audio src=\"{{music.previewUrl}}\" controls *ngIf=\"autoplay==0\">\n    <p>Your browser does not support HTML5 audio.</p>\n  </audio>\n</div>\n"
 
 /***/ }),
 
@@ -373,6 +385,9 @@ var HomeContentComponent = (function () {
         this.dataService.music.subscribe(function (data) {
             // console.log(data)
             _this.music = data;
+        });
+        this.dataService.autoplay.subscribe(function (data) {
+            _this.autoplay = data;
         });
     }
     HomeContentComponent.prototype.ngOnInit = function () {
@@ -418,7 +433,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/home-slider/home-slider.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"music_list\">\n  <ul>\n    <li *ngFor=\"let item of result.results; let isFirst = first\" >\n      <div [ngClass]=\"'music_item '\" \n           (click)=\"onClick(item)\" (mouseover)=\"changeBG($event)\" (mouseleave)=\"changeBG($event)\"\n           *ngIf=\"item.trackName\" >\n        <p class=\"trackName\">{{item.trackName}} </p>\n        <p class=\"artistName\">{{item.artistName}}</p>\n      </div>\n    </li>\n  </ul>\n</div>\n"
+module.exports = "<div class=\"music_list\">\n  <ul>\n    <li *ngFor=\"let item of result.results; let isFirst = first\" >\n      <div [ngClass]=\"'music_item '\"\n           (click)=\"onClick(item)\" \n           *ngIf=\"item.trackName\" >\n        <p class=\"trackName\">{{item.trackName}} </p>\n        <p class=\"artistName\">{{item.artistName}}</p>\n      </div>\n    </li>\n  </ul>\n</div>\n"
 
 /***/ }),
 
@@ -462,10 +477,6 @@ var HomeSliderComponent = (function () {
     HomeSliderComponent.prototype.onClick = function (item) {
         this.dataService.selectedMusic(item);
         // this.clickItemEvent.emit(item)
-    };
-    HomeSliderComponent.prototype.changeBG = function (event) {
-        console.log(event.type);
-        console.log(event);
     };
     return HomeSliderComponent;
 }());
