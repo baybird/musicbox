@@ -195,7 +195,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ":host{\r\n  background: #5f5f5f;\r\n  display: table;\r\n  width: 100%;\r\n  text-align: center;\r\n  color: #fff;\r\n  vertical-align: middle;\r\n  padding: 11px 0;\r\n  border-radius: 0 0 7px 7px;\r\n}\r\n", "", {"version":3,"sources":["Z:/MyProject/02.WEB/nodejs/angularjs/v2/musicbox/src/app/footer/footer.component.css"],"names":[],"mappings":"AAAA;EACE,oBAAoB;EACpB,eAAe;EACf,YAAY;EACZ,mBAAmB;EACnB,YAAY;EACZ,uBAAuB;EACvB,gBAAgB;EAChB,2BAA2B;CAC5B","file":"footer.component.css","sourcesContent":[":host{\r\n  background: #5f5f5f;\r\n  display: table;\r\n  width: 100%;\r\n  text-align: center;\r\n  color: #fff;\r\n  vertical-align: middle;\r\n  padding: 11px 0;\r\n  border-radius: 0 0 7px 7px;\r\n}\r\n"],"sourceRoot":""}]);
+exports.push([module.i, ":host{\r\n  background: #5f5f5f;\r\n  display: table;\r\n  width: 100%;\r\n  text-align: center;\r\n  color: #fff;\r\n  vertical-align: middle;\r\n  padding: 14px 0;\r\n  border-radius: 0 0 7px 7px;\r\n}\r\np{\r\n  font-size: 10px;\r\n}\r\n", "", {"version":3,"sources":["Z:/MyProject/02.WEB/nodejs/angularjs/v2/musicbox/src/app/footer/footer.component.css"],"names":[],"mappings":"AAAA;EACE,oBAAoB;EACpB,eAAe;EACf,YAAY;EACZ,mBAAmB;EACnB,YAAY;EACZ,uBAAuB;EACvB,gBAAgB;EAChB,2BAA2B;CAC5B;AACD;EACE,gBAAgB;CACjB","file":"footer.component.css","sourcesContent":[":host{\r\n  background: #5f5f5f;\r\n  display: table;\r\n  width: 100%;\r\n  text-align: center;\r\n  color: #fff;\r\n  vertical-align: middle;\r\n  padding: 14px 0;\r\n  border-radius: 0 0 7px 7px;\r\n}\r\np{\r\n  font-size: 10px;\r\n}\r\n"],"sourceRoot":""}]);
 
 // exports
 
@@ -208,7 +208,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/footer/footer.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "R.T. 2017\n"
+module.exports = "<p>R.T. 2017</p>\n"
 
 /***/ }),
 
