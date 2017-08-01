@@ -5,5 +5,19 @@
   text-align: center;
   color: #fff;
   vertical-align: middle;
-  padding: 10px 0;
+  padding: 14px 0;
+  border-radius: 0 0 7px 7px;
+}
+div{
+  display: table-cell;
+  width: 50%;
+  text-align: left;
+  padding: 5px;
+  border: 0px solid #ccc;
+}
+p{
+  font-size: 10px;
+}
+label{
+  cursor: pointer;
 }

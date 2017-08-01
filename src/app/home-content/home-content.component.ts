@@ -11,11 +11,16 @@ export class HomeContentComponent implements OnInit {
   @Input() keyword: string;
   // @Input() item: object;
   private music: object = {};
+  private autoplay: boolean;
 
   constructor(private dataService: DataService) {
     this.dataService.music.subscribe((data)=>{
       // console.log(data)
       this.music = data;
+    })
+
+    this.dataService.autoplay.subscribe((data) =>{
+      this.autoplay = data;
     })
   }
 

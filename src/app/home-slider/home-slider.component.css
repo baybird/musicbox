@@ -13,6 +13,9 @@
   list-style-type: none;
   border-bottom: 1px dotted #ccc;
 }
+.music_list li:hover div{
+  background: rgba(0,0,0,0.1);
+}
 .music_list .trackName{
   font-size: 1.1em;
 }

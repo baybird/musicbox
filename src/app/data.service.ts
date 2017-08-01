@@ -10,6 +10,7 @@ import { Subject } from 'rxjs/Subject'
 export class DataService {
   private search_url: string = "https://itunes.apple.com/search?term=%s";
   public music = new Subject();
+  public autoplay = new Subject<boolean>();
 
   // public item: EventEmitter<any> = new EventEmitter();
   constructor(private http: Http) {
@@ -29,5 +30,8 @@ export class DataService {
     this.music.next(music);
   }
 
+  setAutoplay(val:boolean){
+    this.autoplay.next(val)
+  }
 
 }

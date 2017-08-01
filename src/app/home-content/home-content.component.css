@@ -5,6 +5,7 @@
   padding: 28px;
   width: auto;
   height: 100%;
+  position: relative;
 }
 h1{
   font-size: 16px;

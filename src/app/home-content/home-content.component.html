@@ -6,7 +6,11 @@
     <p>{{music.collectionName}}</p>
     <p>{{music.country}}</p>
   </div>
-  <audio src="{{music.previewUrl}}" controls >
+  <audio src="{{music.previewUrl}}" controls autoplay *ngIf="autoplay==1">
+    <p>Your browser does not support HTML5 audio.</p>
+  </audio>
+
+  <audio src="{{music.previewUrl}}" controls *ngIf="autoplay==0">
     <p>Your browser does not support HTML5 audio.</p>
   </audio>
 </div>
