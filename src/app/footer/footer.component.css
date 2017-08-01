@@ -17,6 +17,8 @@ div{
 }
 p{
   font-size: 10px;
+  text-align: right;
+  padding: 0 1em;
 }
 label{
   cursor: pointer;

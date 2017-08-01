@@ -9,7 +9,6 @@ import { DataService } from '../data.service'
 })
 export class HomeContentComponent implements OnInit {
   @Input() keyword: string;
-  // @Input() item: object;
   private music: object = {};
   private autoplay: boolean;
 

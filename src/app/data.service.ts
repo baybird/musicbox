@@ -17,7 +17,22 @@ export class DataService {
 
   }
 
-  search(keyword:string = "Bob Dylan"){
+  search(keyword:string){
+    // handle localstorage
+    // 1) store last keyword to localstorage
+    // 2) if keyword and localstorage are both empty searching "Bob Dylan"
+    var localStr = localStorage.getItem('keyword')
+
+    if(keyword == undefined && localStr !=""){
+      keyword = localStr;
+    }
+
+    if(keyword == undefined && localStr == ""){
+      keyword = "Bob Dylan"
+    }
+
+    localStorage.setItem('keyword', keyword)
+
     var url = sprintf(this.search_url, keyword);
     var obj = this.http.get(url).map(res =>
       res.json()
