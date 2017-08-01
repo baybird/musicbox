@@ -140,6 +140,8 @@ AppModule = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Subject__ = __webpack_require__("../../../../rxjs/Subject.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Subject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_Subject__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DataService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -154,11 +156,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var DataService = (function () {
     // public item: EventEmitter<any> = new EventEmitter();
     function DataService(http) {
         this.http = http;
         this.search_url = "https://itunes.apple.com/search?term=%s";
+        this.music = new __WEBPACK_IMPORTED_MODULE_4_rxjs_Subject__["Subject"]();
     }
     DataService.prototype.search = function (keyword) {
         if (keyword === void 0) { keyword = "Bob Dylan"; }
@@ -168,6 +172,9 @@ var DataService = (function () {
         });
         return obj;
     }; // end func
+    DataService.prototype.selectedMusic = function (music) {
+        this.music.next(music);
+    };
     return DataService;
 }());
 DataService = __decorate([
@@ -188,7 +195,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ":host{\r\n  background: #5f5f5f;\r\n  border-bottom: 1px solid #ccc;\r\n  display: table;\r\n  width: 100%;\r\n  text-align: center;\r\n  color: #fff;\r\n  vertical-align: middle;\r\n  padding: 10px 0;\r\n}\r\n", "", {"version":3,"sources":["Z:/MyProject/02.WEB/nodejs/angularjs/v2/musicbox/src/app/footer/footer.component.css"],"names":[],"mappings":"AAAA;EACE,oBAAoB;EACpB,8BAA8B;EAC9B,eAAe;EACf,YAAY;EACZ,mBAAmB;EACnB,YAAY;EACZ,uBAAuB;EACvB,gBAAgB;CACjB","file":"footer.component.css","sourcesContent":[":host{\r\n  background: #5f5f5f;\r\n  border-bottom: 1px solid #ccc;\r\n  display: table;\r\n  width: 100%;\r\n  text-align: center;\r\n  color: #fff;\r\n  vertical-align: middle;\r\n  padding: 10px 0;\r\n}\r\n"],"sourceRoot":""}]);
+exports.push([module.i, ":host{\r\n  background: #5f5f5f;\r\n  display: table;\r\n  width: 100%;\r\n  text-align: center;\r\n  color: #fff;\r\n  vertical-align: middle;\r\n  padding: 10px 0;\r\n}\r\n", "", {"version":3,"sources":["Z:/MyProject/02.WEB/nodejs/angularjs/v2/musicbox/src/app/footer/footer.component.css"],"names":[],"mappings":"AAAA;EACE,oBAAoB;EACpB,eAAe;EACf,YAAY;EACZ,mBAAmB;EACnB,YAAY;EACZ,uBAAuB;EACvB,gBAAgB;CACjB","file":"footer.component.css","sourcesContent":[":host{\r\n  background: #5f5f5f;\r\n  display: table;\r\n  width: 100%;\r\n  text-align: center;\r\n  color: #fff;\r\n  vertical-align: middle;\r\n  padding: 10px 0;\r\n}\r\n"],"sourceRoot":""}]);
 
 // exports
 
@@ -262,7 +269,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/header/header.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<header>\n  <div class=\"header_cell1\">\n    <div id=\"logo\">Music Box</div>\n  </div>\n  <div class=\"header_cell2\">\n    <form (ngSubmit)=\"submit()\" >\n      <input type=\"text\" id=\"search_input\" name=\"search_input\" placeholder=\"Music, artist, album...\" required\n             [(ngModel)]=\"keyword\" />\n    </form>\n  </div>\n  <div class=\"header_cell3\">\n    <div class=\"router\">\n      <ul>\n        <li><a routerLink=\"/\">Player</a></li>\n        <li><a routerLink=\"info\">Info</a></li>\n      </ul>\n    </div>\n  </div>\n</header>\n"
+module.exports = "<header>\n  <div class=\"header_cell1\">\n    <div id=\"logo\">Music Box</div>\n  </div>\n  <div class=\"header_cell2\">\n    <form (ngSubmit)=\"submit()\" >\n      <input type=\"text\" id=\"search_input\" name=\"search_input\" placeholder=\"Music, artist, album...\" required\n             [(ngModel)]=\"keyword\" />\n    </form>\n  </div>\n  <!-- <div class=\"header_cell3\">\n    <div class=\"router\">\n      <ul>\n        <li><a routerLink=\"/\">Player</a></li>\n        <li><a routerLink=\"info\">Info</a></li>\n      </ul>\n    </div>\n  </div> -->\n</header>\n"
 
 /***/ }),
 
@@ -322,7 +329,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ":host{\r\n  display: table-cell;\r\n}\r\n.music_box{\r\n  padding: 28px;\r\n}\r\n", "", {"version":3,"sources":["Z:/MyProject/02.WEB/nodejs/angularjs/v2/musicbox/src/app/home-content/home-content.component.css"],"names":[],"mappings":"AAAA;EACE,oBAAoB;CACrB;AACD;EACE,cAAc;CACf","file":"home-content.component.css","sourcesContent":[":host{\r\n  display: table-cell;\r\n}\r\n.music_box{\r\n  padding: 28px;\r\n}\r\n"],"sourceRoot":""}]);
+exports.push([module.i, ":host{\n  display: table-cell;\n}\n.music_content{\n  padding: 28px;\n  width: auto;\n  height: 100%;\n}\nh1{\n  font-size: 16px;\n}\nh2{\n  font-size: 12px;\n}\n", "", {"version":3,"sources":["Z:/MyProject/02.WEB/nodejs/angularjs/v2/musicbox/src/app/home-content/home-content.component.css"],"names":[],"mappings":"AAAA;EACE,oBAAoB;CACrB;AACD;EACE,cAAc;EACd,YAAY;EACZ,aAAa;CACd;AACD;EACE,gBAAgB;CACjB;AACD;EACE,gBAAgB;CACjB","file":"home-content.component.css","sourcesContent":[":host{\n  display: table-cell;\n}\n.music_content{\n  padding: 28px;\n  width: auto;\n  height: 100%;\n}\nh1{\n  font-size: 16px;\n}\nh2{\n  font-size: 12px;\n}\n"],"sourceRoot":""}]);
 
 // exports
 
@@ -335,7 +342,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/home-content/home-content.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"music_box\" *ngIf=\"item.trackName\">\n  <h1>{{item.trackName}}</h1>\n  <h2>{{item.artistName}}</h2>\n  <div class=\"\">\n    <img src=\"{{item.artworkUrl100}}\" alt=\"\">\n    <p>{{item.collectionName}}</p>\n    <p>{{item.country}}</p>\n  </div>\n  <audio src=\"{{item.previewUrl}}\" controls >\n    <p>Your browser does not support HTML5 audio.</p>\n  </audio>\n</div>\n"
+module.exports = "<div class=\"music_content\" *ngIf=\"music.trackName\">\n  <h1>{{music.trackName}}</h1>\n  <h2>{{music.artistName}}</h2>\n  <div class=\"\">\n    <img src=\"{{music.artworkUrl100}}\" alt=\"\">\n    <p>{{music.collectionName}}</p>\n    <p>{{music.country}}</p>\n  </div>\n  <audio src=\"{{music.previewUrl}}\" controls >\n    <p>Your browser does not support HTML5 audio.</p>\n  </audio>\n</div>\n"
 
 /***/ }),
 
@@ -344,6 +351,7 @@ module.exports = "<div class=\"music_box\" *ngIf=\"item.trackName\">\n  <h1>{{it
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__data_service__ = __webpack_require__("../../../../../src/app/data.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomeContentComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -355,8 +363,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var HomeContentComponent = (function () {
-    function HomeContentComponent() {
+    function HomeContentComponent(dataService) {
+        var _this = this;
+        this.dataService = dataService;
+        // @Input() item: object;
+        this.music = {};
+        this.dataService.music.subscribe(function (data) {
+            // console.log(data)
+            _this.music = data;
+        });
     }
     HomeContentComponent.prototype.ngOnInit = function () {
     };
@@ -366,19 +383,16 @@ __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* Input */])(),
     __metadata("design:type", String)
 ], HomeContentComponent.prototype, "keyword", void 0);
-__decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* Input */])(),
-    __metadata("design:type", Object)
-], HomeContentComponent.prototype, "item", void 0);
 HomeContentComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* Component */])({
         selector: 'app-home-content',
         template: __webpack_require__("../../../../../src/app/home-content/home-content.component.html"),
         styles: [__webpack_require__("../../../../../src/app/home-content/home-content.component.css")],
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__data_service__["a" /* DataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__data_service__["a" /* DataService */]) === "function" && _a || Object])
 ], HomeContentComponent);
 
+var _a;
 //# sourceMappingURL=home-content.component.js.map
 
 /***/ }),
@@ -391,7 +405,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ":host{\r\n  width: 28%;\r\n  height: 100%;\r\n}\r\n.music_list{\r\n  height: 100%;\r\n}\r\n.music_list ul{\r\n  overflow-y: scroll;\r\n  height: 100%;\r\n  padding: 0 25px;\r\n}\r\n.music_list li{\r\n  list-style-type: none;\r\n  border-bottom: 1px dotted #ccc;\r\n}\r\n.music_list .trackName{\r\n  font-size: 1.1em;\r\n}\r\n.music_list .artistName{\r\n  font-size: 0.8em;\r\n}\r\n.music_item{\r\n  padding: 18px 8px;\r\n  cursor: pointer;\r\n}\r\n.selected{\r\n  background: #efefef;\r\n}\r\n", "", {"version":3,"sources":["Z:/MyProject/02.WEB/nodejs/angularjs/v2/musicbox/src/app/home-slider/home-slider.component.css"],"names":[],"mappings":"AAAA;EACE,WAAW;EACX,aAAa;CACd;AACD;EACE,aAAa;CACd;AACD;EACE,mBAAmB;EACnB,aAAa;EACb,gBAAgB;CACjB;AACD;EACE,sBAAsB;EACtB,+BAA+B;CAChC;AACD;EACE,iBAAiB;CAClB;AACD;EACE,iBAAiB;CAClB;AACD;EACE,kBAAkB;EAClB,gBAAgB;CACjB;AACD;EACE,oBAAoB;CACrB","file":"home-slider.component.css","sourcesContent":[":host{\r\n  width: 28%;\r\n  height: 100%;\r\n}\r\n.music_list{\r\n  height: 100%;\r\n}\r\n.music_list ul{\r\n  overflow-y: scroll;\r\n  height: 100%;\r\n  padding: 0 25px;\r\n}\r\n.music_list li{\r\n  list-style-type: none;\r\n  border-bottom: 1px dotted #ccc;\r\n}\r\n.music_list .trackName{\r\n  font-size: 1.1em;\r\n}\r\n.music_list .artistName{\r\n  font-size: 0.8em;\r\n}\r\n.music_item{\r\n  padding: 18px 8px;\r\n  cursor: pointer;\r\n}\r\n.selected{\r\n  background: #efefef;\r\n}\r\n"],"sourceRoot":""}]);
+exports.push([module.i, ":host{\n  height: 100%;\n}\n.music_list{\n  height: 100%;\n}\n.music_list ul{\n  overflow-y: scroll;\n  height: 100%;\n  padding: 0 5px;\n}\n.music_list li{\n  list-style-type: none;\n  border-bottom: 1px dotted #ccc;\n}\n.music_list .trackName{\n  font-size: 1.1em;\n}\n.music_list .artistName{\n  font-size: 0.9em;\n}\n.music_item{\n  padding: 18px 8px;\n  cursor: pointer;\n}\n.selected{\n  background: #efefef;\n}\n", "", {"version":3,"sources":["Z:/MyProject/02.WEB/nodejs/angularjs/v2/musicbox/src/app/home-slider/home-slider.component.css"],"names":[],"mappings":"AAAA;EACE,aAAa;CACd;AACD;EACE,aAAa;CACd;AACD;EACE,mBAAmB;EACnB,aAAa;EACb,eAAe;CAChB;AACD;EACE,sBAAsB;EACtB,+BAA+B;CAChC;AACD;EACE,iBAAiB;CAClB;AACD;EACE,iBAAiB;CAClB;AACD;EACE,kBAAkB;EAClB,gBAAgB;CACjB;AACD;EACE,oBAAoB;CACrB","file":"home-slider.component.css","sourcesContent":[":host{\n  height: 100%;\n}\n.music_list{\n  height: 100%;\n}\n.music_list ul{\n  overflow-y: scroll;\n  height: 100%;\n  padding: 0 5px;\n}\n.music_list li{\n  list-style-type: none;\n  border-bottom: 1px dotted #ccc;\n}\n.music_list .trackName{\n  font-size: 1.1em;\n}\n.music_list .artistName{\n  font-size: 0.9em;\n}\n.music_item{\n  padding: 18px 8px;\n  cursor: pointer;\n}\n.selected{\n  background: #efefef;\n}\n"],"sourceRoot":""}]);
 
 // exports
 
@@ -404,7 +418,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/home-slider/home-slider.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"music_list\">\n  <ul>\n    <li *ngFor=\"let item of result.results; let isFirst = first\" >\n      <div [ngClass]=\"'music_item selected'\" [class.selected]=\"isFirst\" (click)=\"onClick(item)\" *ngIf=\"item.trackName\">\n        <p class=\"trackName\">{{item.trackName}} </p>\n        <p class=\"artistName\">{{item.artistName}}</p>\n      </div>\n    </li>\n  </ul>\n</div>\n"
+module.exports = "<div class=\"music_list\">\n  <ul>\n    <li *ngFor=\"let item of result.results; let isFirst = first\" >\n      <div [ngClass]=\"'music_item selected'\" [class.selected]=\"isFirst\"\n           (click)=\"onClick(item)\" (mouseover)=\"changeBG($event)\" (mouseleave)=\"changeBG($event)\" \n           *ngIf=\"item.trackName\" >\n        <p class=\"trackName\">{{item.trackName}} </p>\n        <p class=\"artistName\">{{item.artistName}}</p>\n      </div>\n    </li>\n  </ul>\n</div>\n"
 
 /***/ }),
 
@@ -446,7 +460,12 @@ var HomeSliderComponent = (function () {
         });
     };
     HomeSliderComponent.prototype.onClick = function (item) {
-        this.clickItemEvent.emit(item);
+        this.dataService.selectedMusic(item);
+        // this.clickItemEvent.emit(item)
+    };
+    HomeSliderComponent.prototype.changeBG = function (event) {
+        console.log(event.type);
+        console.log(event);
     };
     return HomeSliderComponent;
 }());
@@ -462,8 +481,7 @@ HomeSliderComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* Component */])({
         selector: 'app-home-slider',
         template: __webpack_require__("../../../../../src/app/home-slider/home-slider.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/home-slider/home-slider.component.css")],
-        providers: [__WEBPACK_IMPORTED_MODULE_1__data_service__["a" /* DataService */]]
+        styles: [__webpack_require__("../../../../../src/app/home-slider/home-slider.component.css")]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__data_service__["a" /* DataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__data_service__["a" /* DataService */]) === "function" && _a || Object])
 ], HomeSliderComponent);
@@ -481,7 +499,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"home.component.css","sourceRoot":""}]);
+exports.push([module.i, ":host{\n  position: fixed;\n  left: 0;\n  top: 0;\n  right:0;\n  bottom:0;\n  background: url(" + __webpack_require__("../../../../../src/assets/imgs/Apple-Space-Wallpapers-HD-For-Mac.jpg") + ")\n}\n.musicbox{\n  width: 60%;\n  height: 60%;\n  margin: 0 auto;\n  position: relative;\n  top:50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n  border: 1px solid #333;\n  background: rgba(255,255,255,0.3);\n}\n", "", {"version":3,"sources":["Z:/MyProject/02.WEB/nodejs/angularjs/v2/musicbox/src/app/home/home.component.css"],"names":[],"mappings":"AAAA;EACE,gBAAgB;EAChB,QAAQ;EACR,OAAO;EACP,QAAQ;EACR,SAAS;EACT,yCAA0E;CAC3E;AACD;EACE,WAAW;EACX,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,QAAQ;EACR,oCAA4B;UAA5B,4BAA4B;EAC5B,uBAAuB;EACvB,kCAAkC;CACnC","file":"home.component.css","sourcesContent":[":host{\n  position: fixed;\n  left: 0;\n  top: 0;\n  right:0;\n  bottom:0;\n  background: url('../../assets/imgs/Apple-Space-Wallpapers-HD-For-Mac.jpg')\n}\n.musicbox{\n  width: 60%;\n  height: 60%;\n  margin: 0 auto;\n  position: relative;\n  top:50%;\n  transform: translateY(-50%);\n  border: 1px solid #333;\n  background: rgba(255,255,255,0.3);\n}\n"],"sourceRoot":""}]);
 
 // exports
 
@@ -494,7 +512,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-header (keywordEvent)=\"receiveKeyword($event)\" ></app-header>\n<div id=\"main\">\n    <app-home-slider [keyword]=\"keyword\" [ngStyle]=\"{'width': leftBoxWidth}\" (clickItemEvent)=\"receiveItem($event)\"></app-home-slider>\n    <div id=\"dragbar\" (mousedown)=\"onDragbarResize($event)\" (mouseup)=\"onDragbarRelease()\" ></div>\n    <app-home-content [keyword]=\"keyword\" [item]=\"item\"></app-home-content>\n</div>\n<app-footer></app-footer>\n"
+module.exports = "<div class=\"musicbox\" #musicbox >\n  <app-header (keywordEvent)=\"receiveKeyword($event)\" ></app-header>\n  <div id=\"main\">\n      <app-home-slider [keyword]=\"keyword\" [ngStyle]=\"{'width': leftBoxWidth}\" (clickItemEvent)=\"receiveItem($event)\"></app-home-slider>\n      <div id=\"dragbar\" (mousedown)=\"onDragbarResize($event)\" (mouseup)=\"onDragbarRelease()\" ></div>\n      <app-home-content [keyword]=\"keyword\" ></app-home-content>\n  </div>\n  <app-footer></app-footer>\n</div>\n"
 
 /***/ }),
 
@@ -503,6 +521,7 @@ module.exports = "<app-header (keywordEvent)=\"receiveKeyword($event)\" ></app-h
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__data_service__ = __webpack_require__("../../../../../src/app/data.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomeComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -515,10 +534,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var HomeComponent = (function () {
-    function HomeComponent() {
+    function HomeComponent(dataService) {
+        this.dataService = dataService;
         this.dragging = false;
-        this.leftBoxWidth = '38%';
+        this.leftBoxWidth = '50%';
         this.item = {};
     }
     HomeComponent.prototype.ngOnInit = function () {
@@ -544,13 +565,17 @@ var HomeComponent = (function () {
         if (this.dragging != true) {
             return;
         }
-        this.leftBoxWidth = event.clientX + "px";
+        this.leftBoxWidth = event.clientX - this.musicbox.nativeElement.offsetLeft + "px";
     };
     HomeComponent.prototype.onMouseup = function () {
         this.dragging = false;
     };
     return HomeComponent;
 }());
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_15" /* ViewChild */])("musicbox"),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* ElementRef */]) === "function" && _a || Object)
+], HomeComponent.prototype, "musicbox", void 0);
 __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_6" /* HostListener */])("document:mousemove", ['$event']),
     __metadata("design:type", Function),
@@ -568,10 +593,12 @@ HomeComponent = __decorate([
         selector: 'app-home',
         template: __webpack_require__("../../../../../src/app/home/home.component.html"),
         styles: [__webpack_require__("../../../../../src/app/home/home.component.css")],
+        providers: [__WEBPACK_IMPORTED_MODULE_1__data_service__["a" /* DataService */]]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__data_service__["a" /* DataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__data_service__["a" /* DataService */]) === "function" && _b || Object])
 ], HomeComponent);
 
+var _a, _b;
 //# sourceMappingURL=home.component.js.map
 
 /***/ }),
@@ -609,6 +636,13 @@ AppRouting = __decorate([
 ], AppRouting);
 
 //# sourceMappingURL=route.module.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/assets/imgs/Apple-Space-Wallpapers-HD-For-Mac.jpg":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "Apple-Space-Wallpapers-HD-For-Mac.ba7c99f6d679066f65e6.jpg";
 
 /***/ }),
 
