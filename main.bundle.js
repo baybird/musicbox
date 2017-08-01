@@ -329,7 +329,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ":host{\n  display: table-cell;\n}\n.music_content{\n  padding: 28px;\n  width: auto;\n  height: 100%;\n}\nh1{\n  font-size: 16px;\n}\nh2{\n  font-size: 12px;\n}\n", "", {"version":3,"sources":["Z:/MyProject/02.WEB/nodejs/angularjs/v2/musicbox/src/app/home-content/home-content.component.css"],"names":[],"mappings":"AAAA;EACE,oBAAoB;CACrB;AACD;EACE,cAAc;EACd,YAAY;EACZ,aAAa;CACd;AACD;EACE,gBAAgB;CACjB;AACD;EACE,gBAAgB;CACjB","file":"home-content.component.css","sourcesContent":[":host{\n  display: table-cell;\n}\n.music_content{\n  padding: 28px;\n  width: auto;\n  height: 100%;\n}\nh1{\n  font-size: 16px;\n}\nh2{\n  font-size: 12px;\n}\n"],"sourceRoot":""}]);
+exports.push([module.i, ":host{\n  display: table-cell;\n}\n.music_content{\n  padding: 28px;\n  width: auto;\n  height: 100%;\n  position: relative;\n}\nh1{\n  font-size: 16px;\n}\nh2{\n  font-size: 12px;\n}\n", "", {"version":3,"sources":["Z:/MyProject/02.WEB/nodejs/angularjs/v2/musicbox/src/app/home-content/home-content.component.css"],"names":[],"mappings":"AAAA;EACE,oBAAoB;CACrB;AACD;EACE,cAAc;EACd,YAAY;EACZ,aAAa;EACb,mBAAmB;CACpB;AACD;EACE,gBAAgB;CACjB;AACD;EACE,gBAAgB;CACjB","file":"home-content.component.css","sourcesContent":[":host{\n  display: table-cell;\n}\n.music_content{\n  padding: 28px;\n  width: auto;\n  height: 100%;\n  position: relative;\n}\nh1{\n  font-size: 16px;\n}\nh2{\n  font-size: 12px;\n}\n"],"sourceRoot":""}]);
 
 // exports
 
