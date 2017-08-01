@@ -34,4 +34,9 @@ export class HomeSliderComponent implements OnInit {
     this.dataService.selectedMusic(item);
     // this.clickItemEvent.emit(item)
   }
+
+  changeBG(event){
+    console.log(event.type)
+    console.log(event)
+  }
 }

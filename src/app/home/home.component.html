@@ -1,7 +1,9 @@
-<app-header (keywordEvent)="receiveKeyword($event)" ></app-header>
-<div id="main">
-    <app-home-slider [keyword]="keyword" [ngStyle]="{'width': leftBoxWidth}" (clickItemEvent)="receiveItem($event)"></app-home-slider>
-    <div id="dragbar" (mousedown)="onDragbarResize($event)" (mouseup)="onDragbarRelease()" ></div>
-    <app-home-content [keyword]="keyword" ></app-home-content>
+<div class="musicbox" #musicbox >
+  <app-header (keywordEvent)="receiveKeyword($event)" ></app-header>
+  <div id="main">
+      <app-home-slider [keyword]="keyword" [ngStyle]="{'width': leftBoxWidth}" (clickItemEvent)="receiveItem($event)"></app-home-slider>
+      <div id="dragbar" (mousedown)="onDragbarResize($event)" (mouseup)="onDragbarRelease()" ></div>
+      <app-home-content [keyword]="keyword" ></app-home-content>
+  </div>
+  <app-footer></app-footer>
 </div>
-<app-footer></app-footer>

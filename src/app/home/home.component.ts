@@ -1,4 +1,4 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { HostListener } from '@angular/core'
 import { DataService } from '../data.service'
 
@@ -14,6 +14,8 @@ export class HomeComponent implements OnInit {
   public dragging: boolean = false;
   public leftBoxWidth: string = '50%';
   public item: object = {};
+
+  @ViewChild("musicbox") musicbox: ElementRef;
 
   constructor(private dataService: DataService) { }
 
@@ -47,7 +49,7 @@ export class HomeComponent implements OnInit {
       return;
     }
 
-    this.leftBoxWidth = event.clientX+"px";
+    this.leftBoxWidth = event.clientX - this.musicbox.nativeElement.offsetLeft +"px";
   }
 
   @HostListener("document:mouseup", ['$event'])

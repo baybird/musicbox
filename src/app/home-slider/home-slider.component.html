@@ -1,7 +1,9 @@
 <div class="music_list">
   <ul>
     <li *ngFor="let item of result.results; let isFirst = first" >
-      <div [ngClass]="'music_item selected'" [class.selected]="isFirst" (click)="onClick(item)" *ngIf="item.trackName">
+      <div [ngClass]="'music_item selected'" [class.selected]="isFirst"
+           (click)="onClick(item)" (mouseover)="changeBG($event)" (mouseleave)="changeBG($event)" 
+           *ngIf="item.trackName" >
         <p class="trackName">{{item.trackName}} </p>
         <p class="artistName">{{item.artistName}}</p>
       </div>
