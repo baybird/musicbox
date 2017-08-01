@@ -166,7 +166,17 @@ var DataService = (function () {
         this.autoplay = new __WEBPACK_IMPORTED_MODULE_4_rxjs_Subject__["Subject"]();
     }
     DataService.prototype.search = function (keyword) {
-        if (keyword === void 0) { keyword = "Bob Dylan"; }
+        // handle localstorage
+        // 1) store last keyword to localstorage
+        // 2) if keyword and localstorage are both empty searching "Bob Dylan"
+        var localStr = localStorage.getItem('keyword');
+        if (keyword == undefined && localStr != "") {
+            keyword = localStr;
+        }
+        if (keyword == undefined && localStr == "") {
+            keyword = "Bob Dylan";
+        }
+        localStorage.setItem('keyword', keyword);
         var url = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_sprintf_js__["sprintf"])(this.search_url, keyword);
         var obj = this.http.get(url).map(function (res) {
             return res.json();
@@ -199,7 +209,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ":host{\r\n  background: #5f5f5f;\r\n  display: table;\r\n  width: 100%;\r\n  text-align: center;\r\n  color: #fff;\r\n  vertical-align: middle;\r\n  padding: 14px 0;\r\n  border-radius: 0 0 7px 7px;\r\n}\r\ndiv{\r\n  display: table-cell;\r\n  width: 50%;\r\n  text-align: left;\r\n  padding: 5px;\r\n  border: 0px solid #ccc;\r\n}\r\np{\r\n  font-size: 10px;\r\n}\r\nlabel{\r\n  cursor: pointer;\r\n}\r\n", "", {"version":3,"sources":["Z:/MyProject/02.WEB/nodejs/angularjs/v2/musicbox/src/app/footer/footer.component.css"],"names":[],"mappings":"AAAA;EACE,oBAAoB;EACpB,eAAe;EACf,YAAY;EACZ,mBAAmB;EACnB,YAAY;EACZ,uBAAuB;EACvB,gBAAgB;EAChB,2BAA2B;CAC5B;AACD;EACE,oBAAoB;EACpB,WAAW;EACX,iBAAiB;EACjB,aAAa;EACb,uBAAuB;CACxB;AACD;EACE,gBAAgB;CACjB;AACD;EACE,gBAAgB;CACjB","file":"footer.component.css","sourcesContent":[":host{\r\n  background: #5f5f5f;\r\n  display: table;\r\n  width: 100%;\r\n  text-align: center;\r\n  color: #fff;\r\n  vertical-align: middle;\r\n  padding: 14px 0;\r\n  border-radius: 0 0 7px 7px;\r\n}\r\ndiv{\r\n  display: table-cell;\r\n  width: 50%;\r\n  text-align: left;\r\n  padding: 5px;\r\n  border: 0px solid #ccc;\r\n}\r\np{\r\n  font-size: 10px;\r\n}\r\nlabel{\r\n  cursor: pointer;\r\n}\r\n"],"sourceRoot":""}]);
+exports.push([module.i, ":host{\r\n  background: #5f5f5f;\r\n  display: table;\r\n  width: 100%;\r\n  text-align: center;\r\n  color: #fff;\r\n  vertical-align: middle;\r\n  padding: 14px 0;\r\n  border-radius: 0 0 7px 7px;\r\n}\r\ndiv{\r\n  display: table-cell;\r\n  width: 50%;\r\n  text-align: left;\r\n  padding: 5px;\r\n  border: 0px solid #ccc;\r\n}\r\np{\r\n  font-size: 10px;\r\n  text-align: right;\r\n  padding: 0 1em;\r\n}\r\nlabel{\r\n  cursor: pointer;\r\n}\r\n", "", {"version":3,"sources":["Z:/MyProject/02.WEB/nodejs/angularjs/v2/musicbox/src/app/footer/footer.component.css"],"names":[],"mappings":"AAAA;EACE,oBAAoB;EACpB,eAAe;EACf,YAAY;EACZ,mBAAmB;EACnB,YAAY;EACZ,uBAAuB;EACvB,gBAAgB;EAChB,2BAA2B;CAC5B;AACD;EACE,oBAAoB;EACpB,WAAW;EACX,iBAAiB;EACjB,aAAa;EACb,uBAAuB;CACxB;AACD;EACE,gBAAgB;EAChB,kBAAkB;EAClB,eAAe;CAChB;AACD;EACE,gBAAgB;CACjB","file":"footer.component.css","sourcesContent":[":host{\r\n  background: #5f5f5f;\r\n  display: table;\r\n  width: 100%;\r\n  text-align: center;\r\n  color: #fff;\r\n  vertical-align: middle;\r\n  padding: 14px 0;\r\n  border-radius: 0 0 7px 7px;\r\n}\r\ndiv{\r\n  display: table-cell;\r\n  width: 50%;\r\n  text-align: left;\r\n  padding: 5px;\r\n  border: 0px solid #ccc;\r\n}\r\np{\r\n  font-size: 10px;\r\n  text-align: right;\r\n  padding: 0 1em;\r\n}\r\nlabel{\r\n  cursor: pointer;\r\n}\r\n"],"sourceRoot":""}]);
 
 // exports
 
@@ -239,10 +249,26 @@ var FooterComponent = (function () {
         this.dataService = dataService;
     }
     FooterComponent.prototype.ngOnInit = function () {
+        // this.localautoplay = localStorage.getItem('autoplay');
+        //
+        // if(this.localautoplay != undefined){
+        //   if(this.localautoplay == '1' ){
+        //     this.autoplay = true;
+        //   }else{
+        //     this.autoplay = false;
+        //   }
+        // }
+        //
+        // console.log("save:"+this.autoplay)
     };
     FooterComponent.prototype.onchange = function () {
+        // if(this.autoplay == true){
+        //   localStorage.setItem('autoplay', '1')
+        // }else{
+        //   localStorage.setItem('autoplay', '0')
+        // }
+        // console.log("save:"+this.autoplay)
         this.dataService.setAutoplay(this.autoplay);
-        console.log(this.autoplay);
     };
     return FooterComponent;
 }());
@@ -354,7 +380,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/home-content/home-content.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"music_content\" *ngIf=\"music.trackName\">\n  <h1>{{music.trackName}}</h1>\n  <h2>{{music.artistName}}</h2>\n  <div class=\"\">\n    <img src=\"{{music.artworkUrl100}}\" alt=\"\">\n    <p>{{music.collectionName}}</p>\n    <p>{{music.country}}</p>\n  </div>\n  <audio src=\"{{music.previewUrl}}\" controls autoplay *ngIf=\"autoplay==1\">\n    <p>Your browser does not support HTML5 audio.</p>\n  </audio>\n\n  <audio src=\"{{music.previewUrl}}\" controls *ngIf=\"autoplay==0\">\n    <p>Your browser does not support HTML5 audio.</p>\n  </audio>\n</div>\n"
+module.exports = "<div class=\"music_content\" *ngIf=\"music.trackName\">\n  <h1>{{music.trackName}}</h1>\n  <h2>{{music.artistName}}</h2>\n  <div class=\"\">\n    <img src=\"{{music.artworkUrl100}}\" alt=\"\">\n    <p>{{music.collectionName}}</p>\n    <p>{{music.country}}</p>\n  </div>\n  <audio src=\"{{music.previewUrl}}\" controls autoplay *ngIf=\"autoplay==1\">\n    <p>Your browser does not support HTML5 audio.</p>\n  </audio>\n\n  <audio src=\"{{music.previewUrl}}\" controls *ngIf=\"autoplay!=1\">\n    <p>Your browser does not support HTML5 audio.</p>\n  </audio>\n</div>\n"
 
 /***/ }),
 
@@ -380,7 +406,6 @@ var HomeContentComponent = (function () {
     function HomeContentComponent(dataService) {
         var _this = this;
         this.dataService = dataService;
-        // @Input() item: object;
         this.music = {};
         this.dataService.music.subscribe(function (data) {
             // console.log(data)
