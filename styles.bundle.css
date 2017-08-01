@@ -15,9 +15,9 @@ body{
 header{
   height: 68px;
   background: #363636;
-  border-bottom: 1px solid #ccc;
   display: table;
-  width: 100%
+  width: 100%;
+  border-radius: 7px 7px 0 0;
 }
 #main{
   width: 100%;
