@@ -56,6 +56,8 @@ header{
 #logo{
   color: #fff;
   font-size: 1.5em;
+  text-align: right;
+  padding-right: 15px;
 }
 #search_input{
   font-size: 1.1em;
