@@ -24,6 +24,13 @@ export class HomeContentComponent implements OnInit {
   }
 
   ngOnInit() {
+
+  }
+
+
+  onend(){
+    console.log('ended')
+    console.log(this.dataService.musicList)
   }
 
 }

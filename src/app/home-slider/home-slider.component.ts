@@ -23,7 +23,7 @@ export class HomeSliderComponent implements OnInit {
     // console.log(changes.keyword.currentValue);
     this.dataService.search(changes.keyword.currentValue).subscribe((data) => {
       this.result = data;
-      // console.log(data.results[0])
+      // console.log(data.results)
       if(data.hasOwnProperty('results')){
         this.onClick(data.results[0])
       }

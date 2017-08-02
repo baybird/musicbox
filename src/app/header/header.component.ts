@@ -26,4 +26,8 @@ export class HeaderComponent implements OnInit {
   sendKeyword(){
     this.keywordEvent.emit(this.keyword)
   }
+
+  clearSearchBox(){
+    this.keyword = null;
+  }
 }

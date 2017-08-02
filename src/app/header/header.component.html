@@ -6,6 +6,9 @@
     <form (ngSubmit)="submit()" >
       <input type="text" id="search_input" name="search_input" placeholder="Music, artist, album..." required
              [(ngModel)]="keyword" />
+      <div id="clear_icon" (click)="clearSearchBox()">
+        <i class="fa fa-close"></i>
+      </div>
     </form>
   </div>
   <!-- <div class="header_cell3">

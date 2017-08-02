@@ -1,16 +1,23 @@
 <div class="music_content" *ngIf="music.trackName">
   <h1>{{music.trackName}}</h1>
   <h2>{{music.artistName}}</h2>
-  <div class="">
-    <img src="{{music.artworkUrl100}}" alt="">
-    <p>{{music.collectionName}}</p>
-    <p>{{music.country}}</p>
+  <div style="display:table; padding: 10px 0;">
+    <div style="display:table-cell;width:auto; ">
+      <img src="{{music.artworkUrl100}}" alt="">
+    </div>
+    <div style="display:table-cell;padding-left: 10px;vertical-align: top;">
+      <p>{{music.collectionName}}</p>
+      <p>{{music.releaseDate | date }}</p>
+      <p>{{music.country}}</p>
+    </div>
   </div>
-  <audio src="{{music.previewUrl}}" controls autoplay *ngIf="autoplay==1">
+  <audio src="{{music.previewUrl}}" controls controlsList="nodownload" autoplay *ngIf="autoplay==1" (ended)="onend()">
     <p>Your browser does not support HTML5 audio.</p>
   </audio>
-
-  <audio src="{{music.previewUrl}}" controls *ngIf="autoplay!=1">
+  <audio src="{{music.previewUrl}}" controls controlsList="nodownload" *ngIf="autoplay!=1">
     <p>Your browser does not support HTML5 audio.</p>
   </audio>
+  <p>
+    {{music.shortDescription}}
+  </p>
 </div>

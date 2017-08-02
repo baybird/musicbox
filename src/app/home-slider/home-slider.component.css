@@ -1,5 +1,6 @@
 :host{
   height: 100%;
+  color: #f2f2f2;
 }
 .music_list{
   height: 100%;
@@ -9,6 +10,7 @@
   height: 100%;
   padding: 0 5px;
 }
+
 .music_list li{
   list-style-type: none;
   border-bottom: 1px dotted #ccc;
@@ -28,4 +30,24 @@
 }
 .selected{
   background: #efefef;
+}
+
+
+
+#scrollbar::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+  background-color: #fff;
+}
+
+#scrollbar::-webkit-scrollbar
+{
+  width: 10px;
+  background-color: #fff;
+}
+
+#scrollbar::-webkit-scrollbar-thumb
+{
+  background-color: #000;
+  border: 1px solid #333;
 }

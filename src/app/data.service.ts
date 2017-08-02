@@ -8,7 +8,9 @@ import { Subject } from 'rxjs/Subject'
 
 @Injectable()
 export class DataService {
-  private search_url: string = "https://itunes.apple.com/search?term=%s";
+  private search_url: string = "https://itunes.apple.com/search?media=music&term=%s";
+  public musicList:object = {};
+
   public music = new Subject();
   public autoplay = new Subject<boolean>();
 
