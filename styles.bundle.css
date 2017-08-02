@@ -59,14 +59,7 @@ header{
   text-align: right;
   padding-right: 15px;
 }
-#search_input{
-  font-size: 1.1em;
-  border-radius: 26px;
-  padding: 8px 18px;
-  width: 388px;
-  border: 1px solid #333;
-  background: #f2f2f2;
-}
+
 .router li{
   display: inline-block;
   float: left;

@@ -295,7 +295,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"header.component.css","sourceRoot":""}]);
+exports.push([module.i, "form{\r\n  position: relative;\r\n  border: 1px solid #ccc;\r\n  border-radius: 26px;\r\n  padding: 8px 18px;\r\n  width: 388px;\r\n  border: 1px solid #333;\r\n  background: #f2f2f2;\r\n}\r\n#search_input{\r\n  font-size: 1.1em;\r\n  width: 100%;\r\n  border: none;\r\n  background: none;\r\n}\r\n#clear_icon {\r\n  float: right;\r\n  right: 12px;\r\n  position: absolute;\r\n  top: 9px;\r\n  cursor: pointer;\r\n  color: #666;\r\n  display: none;\r\n}\r\nform:hover #clear_icon {\r\n  display: block ;\r\n}\r\n", "", {"version":3,"sources":["Z:/MyProject/02.WEB/nodejs/angularjs/v2/musicbox/src/app/header/header.component.css"],"names":[],"mappings":"AAAA;EACE,mBAAmB;EACnB,uBAAuB;EACvB,oBAAoB;EACpB,kBAAkB;EAClB,aAAa;EACb,uBAAuB;EACvB,oBAAoB;CACrB;AACD;EACE,iBAAiB;EACjB,YAAY;EACZ,aAAa;EACb,iBAAiB;CAClB;AACD;EACE,aAAa;EACb,YAAY;EACZ,mBAAmB;EACnB,SAAS;EACT,gBAAgB;EAChB,YAAY;EACZ,cAAc;CACf;AACD;EACE,gBAAgB;CACjB","file":"header.component.css","sourcesContent":["form{\r\n  position: relative;\r\n  border: 1px solid #ccc;\r\n  border-radius: 26px;\r\n  padding: 8px 18px;\r\n  width: 388px;\r\n  border: 1px solid #333;\r\n  background: #f2f2f2;\r\n}\r\n#search_input{\r\n  font-size: 1.1em;\r\n  width: 100%;\r\n  border: none;\r\n  background: none;\r\n}\r\n#clear_icon {\r\n  float: right;\r\n  right: 12px;\r\n  position: absolute;\r\n  top: 9px;\r\n  cursor: pointer;\r\n  color: #666;\r\n  display: none;\r\n}\r\nform:hover #clear_icon {\r\n  display: block ;\r\n}\r\n"],"sourceRoot":""}]);
 
 // exports
 
@@ -308,7 +308,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/header/header.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<header>\n  <div class=\"header_cell1\">\n    <div id=\"logo\">Music Box</div>\n  </div>\n  <div class=\"header_cell2\">\n    <form (ngSubmit)=\"submit()\" >\n      <input type=\"text\" id=\"search_input\" name=\"search_input\" placeholder=\"Music, artist, album...\" required\n             [(ngModel)]=\"keyword\" />\n    </form>\n  </div>\n  <!-- <div class=\"header_cell3\">\n    <div class=\"router\">\n      <ul>\n        <li><a routerLink=\"/\">Player</a></li>\n        <li><a routerLink=\"info\">Info</a></li>\n      </ul>\n    </div>\n  </div> -->\n</header>\n"
+module.exports = "<header>\n  <div class=\"header_cell1\">\n    <div id=\"logo\">Music Box</div>\n  </div>\n  <div class=\"header_cell2\">\n    <form (ngSubmit)=\"submit()\" >\n      <input type=\"text\" id=\"search_input\" name=\"search_input\" placeholder=\"Music, artist, album...\" required\n             [(ngModel)]=\"keyword\" />\n      <div id=\"clear_icon\" (click)=\"clearSearchBox()\">\n        <i class=\"fa fa-close\"></i>\n      </div>\n    </form>\n  </div>\n  <!-- <div class=\"header_cell3\">\n    <div class=\"router\">\n      <ul>\n        <li><a routerLink=\"/\">Player</a></li>\n        <li><a routerLink=\"info\">Info</a></li>\n      </ul>\n    </div>\n  </div> -->\n</header>\n"
 
 /***/ }),
 
@@ -340,6 +340,9 @@ var HeaderComponent = (function () {
     };
     HeaderComponent.prototype.sendKeyword = function () {
         this.keywordEvent.emit(this.keyword);
+    };
+    HeaderComponent.prototype.clearSearchBox = function () {
+        this.keyword = null;
     };
     return HeaderComponent;
 }());
@@ -498,7 +501,7 @@ var HomeSliderComponent = (function () {
         // console.log(changes.keyword.currentValue);
         this.dataService.search(changes.keyword.currentValue).subscribe(function (data) {
             _this.result = data;
-            console.log(data.results);
+            // console.log(data.results)
             if (data.hasOwnProperty('results')) {
                 _this.onClick(data.results[0]);
             }
