@@ -162,6 +162,7 @@ var DataService = (function () {
     function DataService(http) {
         this.http = http;
         this.search_url = "https://itunes.apple.com/search?term=%s";
+        this.musicList = {};
         this.music = new __WEBPACK_IMPORTED_MODULE_4_rxjs_Subject__["Subject"]();
         this.autoplay = new __WEBPACK_IMPORTED_MODULE_4_rxjs_Subject__["Subject"]();
     }
@@ -367,7 +368,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ":host{\n  display: table-cell;\n}\n.music_content{\n  padding: 28px;\n  width: auto;\n  height: 100%;\n  position: relative;\n}\nh1{\n  font-size: 16px;\n}\nh2{\n  font-size: 12px;\n}\n", "", {"version":3,"sources":["Z:/MyProject/02.WEB/nodejs/angularjs/v2/musicbox/src/app/home-content/home-content.component.css"],"names":[],"mappings":"AAAA;EACE,oBAAoB;CACrB;AACD;EACE,cAAc;EACd,YAAY;EACZ,aAAa;EACb,mBAAmB;CACpB;AACD;EACE,gBAAgB;CACjB;AACD;EACE,gBAAgB;CACjB","file":"home-content.component.css","sourcesContent":[":host{\n  display: table-cell;\n}\n.music_content{\n  padding: 28px;\n  width: auto;\n  height: 100%;\n  position: relative;\n}\nh1{\n  font-size: 16px;\n}\nh2{\n  font-size: 12px;\n}\n"],"sourceRoot":""}]);
+exports.push([module.i, ":host{\n  display: table-cell;\n  color: #f2f2f2;\n}\n.music_content{\n  padding: 28px;\n  width: auto;\n  position: relative;\n}\nh1{\n  font-size: 1.5em;\n}\nh2{\n  font-size: 12px;\n}\nh1,h2{\n\n}\n", "", {"version":3,"sources":["Z:/MyProject/02.WEB/nodejs/angularjs/v2/musicbox/src/app/home-content/home-content.component.css"],"names":[],"mappings":"AAAA;EACE,oBAAoB;EACpB,eAAe;CAChB;AACD;EACE,cAAc;EACd,YAAY;EACZ,mBAAmB;CACpB;AACD;EACE,iBAAiB;CAClB;AACD;EACE,gBAAgB;CACjB;AACD;;CAEC","file":"home-content.component.css","sourcesContent":[":host{\n  display: table-cell;\n  color: #f2f2f2;\n}\n.music_content{\n  padding: 28px;\n  width: auto;\n  position: relative;\n}\nh1{\n  font-size: 1.5em;\n}\nh2{\n  font-size: 12px;\n}\nh1,h2{\n\n}\n"],"sourceRoot":""}]);
 
 // exports
 
@@ -380,7 +381,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/home-content/home-content.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"music_content\" *ngIf=\"music.trackName\">\n  <h1>{{music.trackName}}</h1>\n  <h2>{{music.artistName}}</h2>\n  <div class=\"\">\n    <img src=\"{{music.artworkUrl100}}\" alt=\"\">\n    <p>{{music.collectionName}}</p>\n    <p>{{music.country}}</p>\n  </div>\n  <audio src=\"{{music.previewUrl}}\" controls autoplay *ngIf=\"autoplay==1\">\n    <p>Your browser does not support HTML5 audio.</p>\n  </audio>\n\n  <audio src=\"{{music.previewUrl}}\" controls *ngIf=\"autoplay!=1\">\n    <p>Your browser does not support HTML5 audio.</p>\n  </audio>\n</div>\n"
+module.exports = "<div class=\"music_content\" *ngIf=\"music.trackName\">\n  <h1>{{music.trackName}}</h1>\n  <h2>{{music.artistName}}</h2>\n  <div style=\"display:table; padding: 10px 0;\">\n    <div style=\"display:table-cell;width:auto; \">\n      <img src=\"{{music.artworkUrl100}}\" alt=\"\">\n    </div>\n    <div style=\"display:table-cell;padding-left: 10px;vertical-align: top;\">\n      <p>{{music.collectionName}}</p>\n      <p>{{music.releaseDate | date }}</p>\n      <p>{{music.country}}</p>\n    </div>\n  </div>\n  <audio src=\"{{music.previewUrl}}\" controls autoplay *ngIf=\"autoplay==1\" (ended)=\"onend()\">\n    <p>Your browser does not support HTML5 audio.</p>\n  </audio>\n  <audio src=\"{{music.previewUrl}}\" controls *ngIf=\"autoplay!=1\">\n    <p>Your browser does not support HTML5 audio.</p>\n  </audio>\n  <p>\n    {{music.shortDescription}}\n  </p>\n</div>\n"
 
 /***/ }),
 
@@ -416,6 +417,10 @@ var HomeContentComponent = (function () {
         });
     }
     HomeContentComponent.prototype.ngOnInit = function () {
+    };
+    HomeContentComponent.prototype.onend = function () {
+        console.log('ended');
+        console.log(this.dataService.musicList);
     };
     return HomeContentComponent;
 }());
@@ -493,7 +498,7 @@ var HomeSliderComponent = (function () {
         // console.log(changes.keyword.currentValue);
         this.dataService.search(changes.keyword.currentValue).subscribe(function (data) {
             _this.result = data;
-            // console.log(data.results[0])
+            console.log(data.results);
             if (data.hasOwnProperty('results')) {
                 _this.onClick(data.results[0]);
             }
