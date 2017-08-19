@@ -12,6 +12,7 @@ export class HomeSliderComponent implements OnInit {
   @Output() clickItemEvent = new EventEmitter<any>();
 
   public result = [];
+  public selectedRow = 0;
 
   constructor(private dataService: DataService) { }
 
@@ -25,12 +26,13 @@ export class HomeSliderComponent implements OnInit {
       this.result = data;
       // console.log(data.results)
       if(data.hasOwnProperty('results')){
-        this.onClick(data.results[0])
+        this.onClick(data.results[0], 0)
       }
     });
   }
 
-  onClick(item): void {
+  onClick(item, rowNum): void {
+    this.selectedRow = rowNum
     this.dataService.selectedMusic(item);
     // this.clickItemEvent.emit(item)
   }

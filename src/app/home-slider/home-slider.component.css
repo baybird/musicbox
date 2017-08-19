@@ -8,15 +8,28 @@
 .music_list ul{
   overflow-y: scroll;
   height: 100%;
-  padding: 0 5px;
 }
-
 .music_list li{
+  cursor: pointer;
   list-style-type: none;
   border-bottom: 1px dotted #ccc;
 }
-.music_list li:hover div{
+.music_list li:hover{
   background: rgba(0,0,0,0.1);
+}
+.music_item{
+  display: table;
+  width: calc(100%-16px);
+  height: 100%;
+  padding: 18px 8px;
+
+}
+.cell{
+  display: table-cell;
+}
+.music_list .id{
+  width: 20px;
+  font-size: 0.7em;
 }
 .music_list .trackName{
   font-size: 1.1em;
@@ -24,16 +37,9 @@
 .music_list .artistName{
   font-size: 0.9em;
 }
-.music_item{
-  padding: 18px 8px;
-  cursor: pointer;
-}
 .selected{
-  background: #efefef;
+  background: rgba(0,0,0,0.1);
 }
-
-
-
 #scrollbar::-webkit-scrollbar-track
 {
   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);

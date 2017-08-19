@@ -43,6 +43,17 @@ export class HomeComponent implements OnInit {
     this.dragging = false;
   }
 
+  @HostListener('load', ['$event'])
+  onPageLoad(event){
+    console.log(event)
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.leftBoxWidth = event.target.innerWidth+'px';
+    console.log(this.leftBoxWidth)
+  }
+
   @HostListener("document:mousemove", ['$event'])
   onMousemove(event){
     if(this.dragging != true){
